@@ -22,3 +22,22 @@ def userdb(request):
         return HttpResponseRedirect(reverse('home-page'))
     else:
         return HttpResponseRedirect(reverse('add-user'))
+
+def deletedata(request,id):
+    dt = First.objects.get(pk=id)
+    dt.delete()
+    return HttpResponseRedirect(reverse('home-page'))
+
+def editdata(request,id):
+    dt = First.objects.get(pk=id)
+    return render(request,"updateuser.html",{
+        "data":dt
+    })
+def update(request):
+    if request.method == "POST":
+        id = request.POST['id']
+        dt = First.objects.get(pk=id)
+        dt.First_Name = request.POST['firstname']
+        dt.Last_Name = request.POST['lastname']
+        dt.save()
+        return HttpResponseRedirect(reverse('home-page'))
