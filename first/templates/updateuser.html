@@ -9,15 +9,18 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
+        <div align="center">
+        <h1>Update User</h1>
         <form action="{% url 'update-data'%}" method="POST">
             {% csrf_token %}
-            <br><br>
+            <br>
             <input type="hidden" name="id" value="{{data.id}}">
             First Name
             <input type="text" name="firstname" placeholder="enter first name here" value="{{data.First_Name}}"><br>
             Last Name
             <input type="text" name="lastname" placeholder="enter last name here" value="{{data.Last_Name}}"><br>
-            <input type="submit" value="Update User">
+            <br><input type="submit" value="Update User">
         </form>
+    </div>
     </body>
 </html>
